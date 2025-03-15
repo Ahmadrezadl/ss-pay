@@ -1,0 +1,15 @@
+{
+  "name": "ss-pay",
+  "version": "1.0.0",
+  "description": "Node.js server for verifying purchases from multiple app stores",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0"
+  }
+}
