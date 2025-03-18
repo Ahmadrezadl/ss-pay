@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     if (store.bypass) {
       status = 'success';
     } else {
-      status = verifyPurchase(store, receipt, accessToken, sku, game_package);
+      status = await verifyPurchase(store, receipt, accessToken, sku, game_package);
     }
 
 
