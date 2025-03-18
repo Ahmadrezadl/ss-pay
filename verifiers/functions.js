@@ -1,4 +1,4 @@
-async function verifyPurchase(store, receipt, accessToken, game_package, sku) {
+async function verify(store, receipt, accessToken, game_package, sku) {
   if (store.name === 'CafeBazaar') {
     return await verifyCafeBazaar(receipt, accessToken, game_package, sku);
   }

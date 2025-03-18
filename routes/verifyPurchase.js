@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const axios = require('axios');
-const { verifyPurchase } = require('../verifiers/functions');
+const { verify } = require('../verifiers/functions');
 
 
 router.post('/', async (req, res) => {
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     if (store.bypass) {
       status = 0;
     } else {
-      status = await verifyPurchase(store, receipt, accessToken, sku, game_package);
+      status = await verify(store, receipt, accessToken, sku, game_package);
     }
 
 
