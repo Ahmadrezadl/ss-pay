@@ -31,11 +31,7 @@ async function verifyCafeBazaar(receipt, accessToken, game_package, sku) {
     body: JSON.stringify(body),
   });
 
-  if (response.status !== 200) {
-    console.error('CafeBazaar Verification Failed', response.status);
-  }
-
-  return response.status === 200;
+  return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
 }
 
 async function verifyMyket(receipt, accessToken, game_package, sku) {
@@ -49,23 +45,19 @@ async function verifyMyket(receipt, accessToken, game_package, sku) {
     headers: headers,
   });
 
-  if (response.status !== 200) {
-    console.error('CafeBazaar Verification Failed', response.status);
-  }
-
-  return response.status === 200;
+  return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
 }
 
 async function verifyZarinPal(receipt, accessToken, game_package, sku) {
-  return true;
+  return 0;
 }
 
 async function verifyGooglePlay(receipt, accessToken, game_package, sku) {
-  return true;
+  return 0;
 }
 
 async function verifyAppleStore(receipt, accessToken, game_package, sku) {
-  return true;
+  return 0;
 }
 
 module.exports = {

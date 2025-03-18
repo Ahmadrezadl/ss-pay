@@ -30,10 +30,10 @@ router.post('/', async (req, res) => {
 
     const accessToken = tokenRecord.rows[0].access_token || null;
 
-    let status = 'failed';
+    let status = 2;
 
     if (store.bypass) {
-      status = 'success';
+      status = 0;
     } else {
       status = await verifyPurchase(store, receipt, accessToken, sku, game_package);
     }
@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
     await db.query('INSERT INTO payments (receipt, user_identifier, store_id, game_id, status,sku) VALUES ($1, $2, $3, $4, $5, $6)',
       [receipt, user_identifier, store.id, game.id, status, sku]);
 
-    res.json({ status });
+    res.status(status === 0 ? 200 : status === 1 ? 400 : 404).json({ status });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Server error' });
