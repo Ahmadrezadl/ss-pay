@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
 
     const stores = await db.query('SELECT * FROM stores WHERE name = $1', [store_name]);
-    if (!stores.rows.length) return res.status(400).json({ error: 'Store not found' });
+    if (!stores.rows.length) return res.status(401).json({ error: 'Store not found' });
 
     const store = stores.rows[0];
 
