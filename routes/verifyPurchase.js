@@ -6,7 +6,7 @@ const { verifyPurchase } = require('../verifiers/functions');
 
 
 router.post('/', async (req, res) => {
-  const { store_name, game_package, receipt, user_identifier } = req.body;
+  const { store_name, game_package, receipt, sku, user_identifier } = req.body;
 
   const secret_key = req.headers.authorization;
 
@@ -35,12 +35,12 @@ router.post('/', async (req, res) => {
     if (store.bypass) {
       status = 'success';
     } else {
-      status = verifyPurchase(store, receipt, accessToken);
+      status = verifyPurchase(store, receipt, accessToken, sku, game_package);
     }
 
 
-    await db.query('INSERT INTO payments (receipt, user_identifier, store_id, game_id, status) VALUES ($1, $2, $3, $4, $5)',
-      [receipt, user_identifier, store.id, game.id, status]);
+    await db.query('INSERT INTO payments (receipt, user_identifier, store_id, game_id, status,sku) VALUES ($1, $2, $3, $4, $5, $6)',
+      [receipt, user_identifier, store.id, game.id, status, sku]);
 
     res.json({ status });
   } catch (error) {
