@@ -61,5 +61,5 @@ async function verifyAppleStore(receipt, accessToken, game_package, sku) {
 }
 
 module.exports = {
-  verifyPurchase,
+  verify,
 };
