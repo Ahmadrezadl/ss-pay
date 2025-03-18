@@ -1,18 +1,18 @@
 async function verifyPurchase(store, receipt, accessToken, game_package, sku) {
   if (store.name === 'CafeBazaar') {
-    return verifyCafeBazaar(receipt, accessToken, game_package, sku);
+    return await verifyCafeBazaar(receipt, accessToken, game_package, sku);
   }
   if (store.name === 'Myket') {
-    return verifyMyket(receipt, accessToken, game_package, sku);
+    return await verifyMyket(receipt, accessToken, game_package, sku);
   }
   if (store.name === 'ZarinPal') {
-    return verifyZarinPal(receipt, accessToken, game_package, sku);
+    return await verifyZarinPal(receipt, accessToken, game_package, sku);
   }
   if (store.name === 'GooglePlay') {
-    return verifyGooglePlay(receipt, accessToken, game_package, sku);
+    return await verifyGooglePlay(receipt, accessToken, game_package, sku);
   }
   if (store.name === 'AppStore') {
-    return verifyAppleStore(receipt, accessToken, game_package, sku);
+    return await verifyAppleStore(receipt, accessToken, game_package, sku);
   }
 }
 
