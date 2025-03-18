@@ -5,6 +5,10 @@ const axios = require('axios');
 const { verify } = require('../verifiers/functions');
 
 
+router.get('/ping', (req, res) => {
+  res.json({ message: 'pong' });
+});
+
 router.post('/', async (req, res) => {
   const { store_name, game_package, receipt, sku, user_identifier } = req.body;
 

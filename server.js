@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-app.post('/verify-purchase', require('./routes/verifyPurchase'));
+app.use('/verify-purchase', require('./routes/verifyPurchase'));
 
 const PORT = process.env.PORT || 3000;
 
