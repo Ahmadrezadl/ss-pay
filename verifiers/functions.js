@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-async function verify(store, receipt, accessToken, game_package, sku) {
+async function verify(store, receipt, accessToken, sku, game_package) {
   if (store.name === 'CafeBazaar') {
     return await verifyCafeBazaar(receipt, accessToken, game_package, sku);
   }
