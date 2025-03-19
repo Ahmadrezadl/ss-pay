@@ -34,7 +34,7 @@ async function verifyCafeBazaar(receipt, accessToken, game_package, sku) {
     body: JSON.stringify(body),
   });
 
-  console.log('Purchase Log for CafeBazaar, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', response.body);
+  console.log('Purchase Log for CafeBazaar, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', response.text());
 
   return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
 }
@@ -51,7 +51,7 @@ async function verifyMyket(receipt, accessToken, game_package, sku) {
     headers: headers,
   });
 
-  console.log('Purchase Log for Myket, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', response.body);
+  console.log('Purchase Log for Myket, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', response.text());
   return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
 }
 
