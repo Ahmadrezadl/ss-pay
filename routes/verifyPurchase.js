@@ -29,12 +29,9 @@ router.post('/', async (req, res) => {
     const store = stores.rows[0];
 
 
-    console.log('Store:', store);
-    console.log('Game:', game);
     const tokenRecord = await db.query('SELECT * FROM access_tokens WHERE store_id = $1 AND game_id = $2', [store.id, game.id]);
     if (!tokenRecord.rows.length && !store.rows[0].bypass) return res.status(400).json({ error: 'Access token not found' });
 
-    console.log('Token Record:', tokenRecord.rows);
     const accessToken = tokenRecord.rows[0].access_token || null;
 
     let status = 2;
