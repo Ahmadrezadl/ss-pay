@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
     if (store.bypass) {
       status = 0;
     } else {
-      status = await verify(store, receipt, accessToken, sku, game_package);
+      status = await verify(store, receipt, accessToken.trim(), sku, game_package);
     }
 
 
