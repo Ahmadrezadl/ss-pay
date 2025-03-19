@@ -21,6 +21,7 @@ async function verify(store, receipt, accessToken, game_package, sku) {
 async function verifyCafeBazaar(receipt, accessToken, game_package, sku) {
   let url = `https://pardakht.cafebazaar.ir/devapi/v2/api/consume/${game_package}/purchases/`;
   let headers = {
+    'Content-Type': 'application/json',
     'CAFEBAZAAR-PISHKHAN-API-SECRET': accessToken,
   };
   let body = {
@@ -40,6 +41,7 @@ async function verifyMyket(receipt, accessToken, game_package, sku) {
   let url = `https://developer.myket.ir/api/partners/applications/${game_package}/purchases/products/${sku}/tokens/${receipt}/consume`;
   let headers = {
     'X-Access-Token': accessToken,
+    'Content-Type': 'application/json'
   };
 
   let response = await fetch(url, {
