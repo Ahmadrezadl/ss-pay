@@ -34,6 +34,8 @@ async function verifyCafeBazaar(receipt, accessToken, game_package, sku) {
     body: JSON.stringify(body),
   });
 
+  console.log('Purchase Log for CafeBazaar, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', response.body);
+
   return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
 }
 
@@ -41,7 +43,7 @@ async function verifyMyket(receipt, accessToken, game_package, sku) {
   let url = `https://developer.myket.ir/api/partners/applications/${game_package}/purchases/products/${sku}/tokens/${receipt}/consume`;
   let headers = {
     'X-Access-Token': accessToken,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   };
 
   let response = await fetch(url, {
@@ -49,6 +51,7 @@ async function verifyMyket(receipt, accessToken, game_package, sku) {
     headers: headers,
   });
 
+  console.log('Purchase Log for Myket, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', response.body);
   return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
 }
 
