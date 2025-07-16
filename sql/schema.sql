@@ -25,6 +25,7 @@ CREATE TABLE payments (
   store_id INTEGER REFERENCES stores(id),
   game_id INTEGER REFERENCES games(id),
   sku VARCHAR(255) NOT NULL,
+  price INTEGER DEFAULT NULL,
   status VARCHAR(10) CHECK (status IN ('success', 'failed')) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
