@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 
 
         await db.query('INSERT INTO payments (receipt, user_identifier, store_id, game_id, status,sku, price) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-            [receipt, user_identifier, store.id, game.id, status === 0 ? 'success' : 'failed', sku, price ?? null]);
+            [receipt, user_identifier, store.id, game.id, status === 0 ? 'success' : 'failed', sku, price !== undefined ? price : null]);
 
         res.status(status === 0 ? 200 : status === 1 ? 400 : 404).json({status});
     } catch (error) {
