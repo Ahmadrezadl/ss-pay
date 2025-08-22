@@ -52,7 +52,23 @@ async function verifyMyket(receipt, accessToken, game_package, sku) {
     });
 
     console.log('Purchase Log for Myket, for game: ' + game_package + ' and sku: ' + sku + ' and receipt: ' + receipt + ' and access token: ' + accessToken + ' and response: ' + response.status, ' and body', await response.text());
-    return response.status === 200 ? 0 : response.status === 400 ? 1 : 2;
+    
+    if (response.status === 200) {
+        return 0;
+    } else {
+        try {
+            const responseText = await response.text();
+            const responseData = JSON.parse(responseText);
+            
+            if (responseData.messageCode === 'SkuAlreadyConsumed') {
+                return 1;
+            } else {
+                return 2;
+            }
+        } catch (error) {
+            return 2;
+        }
+    }
 }
 
 async function verifyZarinPal(receipt, accessToken, game_package, sku) {
